@@ -18,6 +18,7 @@ import PrivateRoute from './Components/PrivateRoute';
 import Note from './Components/Note';
 import AddNote from './Components/AddNote';
 import Charts from './Components/Charts';
+import Cylindrical from './Components/Cylindrical';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -44,6 +45,7 @@ function App() {
             <Route path="/dashboard/note" element={<Note />} />
             <Route path="/dashboard/profile" element={<Profile />} />
             <Route path="/dashboard/charts" element={<Charts />} />
+            <Route path="/dashboard/cylindrical" element={<Cylindrical />} />
             <Route path="/dashboard/add_category" element={<AddCategory />} />
             <Route path="/dashboard/add_note" element={<AddNote />} />
             <Route path="/dashboard/add_employee" element={<AddEmployee />} />

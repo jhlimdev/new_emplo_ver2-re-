@@ -1,39 +1,168 @@
 // Profile.js
-
 import React, { useState } from 'react';
-import './Profile.css';
+//import './Profile.css';
+import './ProfileSlider.css';
+
+import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 const Profile = () => {
   const [name1] = useState('Jaehoon Lim');
   const [name2] = useState('Sehyeong Jo');
-  const [name3] = useState('Jinsu Han');
-  const [name4] = useState('Hyeonsu No');
+  const [name3] = useState('Hyeonsu No');
+  const [name4] = useState('Jinsu Han');
   const [name5] = useState('Yangsu Jo');
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
 
   return (
+    <>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    
+<div> 
+</div>
+    <section>
+      <div className="swiper mySwiper container">
+        <div className="swiper-wrapper content">
+        <Swiper
+      modules={[Autoplay ,Navigation, Pagination, A11y]}
+      loop='true'
+      loopFillGroupWithBlank='true'
+      autoplay={{delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true}}
+      spaceBetween={50}
+      slidesPerView={3}
+      navigation={true}
+      pagination={{ clickable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+    >
+    
+        <SwiperSlide>
+          <div className="swiper-slide card">
+            <div className="box1"></div>
+              <div className="card-content">
+                <div className="image">
+                  <img
+                  src="../Images/photo1.png"
+                  alt="프로필 이미지"
+                  className="profile-image" />
+                </div>
+                <div className="name-profession">
+                  <span className="name">{name1}</span>
+                  <span className="profession">PM/PL/SM/DB/Designer/Programmer</span>
+                </div>
+                <div className="about">
+                  <p>동서울대학교 컴퓨터정보과 3학년 A반 1912013</p>
+                </div>
+              </div>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>  
+          <div className="swiper-slide card">
+            <div className="box2"></div>
+              <div className="card-content">
+                <div className="image">
+                  <img
+                  src="../Images/photo2.png"
+                  alt="프로필 이미지"
+                  className="profile-image" />
+                </div>
+                <div className="name-profession">
+                  <span className="name">{name2}</span>
+                  <span className="profession">SM/Designer/Programmer</span>
+                </div>
+                <div className="about">
+                  <p>동서울대학교 컴퓨터정보과 3학년  A반 1912002</p>
+                </div>
+              </div>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>  
+          <div className="swiper-slide card">
+            <div className="box3"></div>
+              <div className="card-content">
+                <div className="image">
+                  <img
+                  src="../Images/photo3.png"
+                  alt="프로필 이미지"
+                  className="profile-image" />
+                </div>
+                <div className="name-profession">
+                  <span className="name">{name3}</span>
+                  <span className="profession">Consultant/DB/SM/Designer</span>
+                </div>
+                <div className="about">
+                  <p>동서울대학교 컴퓨터정보과 3학년 A반 190479</p>
+                </div>
+              </div>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide> 
+          <div className="swiper-slide card">
+            <div className="box4"></div>
+              <div className="card-content">
+                <div className="image">
+                  <img
+                  src="../Images/photo4.png"
+                  alt="프로필 이미지"
+                  className="profile-image" />
+                </div>
+                <div className="name-profession">
+                  <span className="name">{name4}</span>
+                  <span className="profession">Consultant/SM/Designer/Programmer</span>
+                </div>
+                <div className="about">
+                  <p>동서울대학교 컴퓨터정보과 3학년 A반 1912095</p>
+                </div>
+              </div>
+          </div>
+        </SwiperSlide>  
+
+        <SwiperSlide> 
+          <div className="swiper-slide card">
+            <div className="box5"></div>
+              <div className="card-content">
+                <div className="image">
+                  <img
+                  src="../Images/photo5.png"
+                  alt="프로필 이미지"
+                  className="profile-image" />
+                </div>
+                <div className="name-profession">
+                  <span className="name">{name5}</span>
+                  <span className="profession">Consultant/Designer/Programmer</span>
+                </div>
+                <div className="about">
+                  <p>동서울대학교 컴퓨터정보과 3학년 A반 1912009</p>
+                </div>
+              </div>
+          </div>
+          </SwiperSlide>  
+        </Swiper>
+        </div>
+      </div>
+    </section>
+
+    {/*
     <div className={`profile-container ${darkMode ? 'dark-mode' : ''}`}>
       <div className="profile-header">
         <img
-          src="https://placekitten.com/200/200" 
+          src="https://placekitten.com/200/200"
           alt="프로필 이미지"
-          className="profile-image"
-        />
+          className="profile-image" />
         <h1 className="profile-name">
           {name1}
         </h1>
-        <button className="toggle-dark-mode" onClick={toggleDarkMode}>
-          Toggle Dark Mode
-        </button>
+        </div>
+        <p className="profile-bio">Fullstack/DB</p>
       </div>
-      <p className="profile-bio">Fullstack/DB</p>
-      </div>
-    
-    
+      */}
+  </>
   );
 };
 
