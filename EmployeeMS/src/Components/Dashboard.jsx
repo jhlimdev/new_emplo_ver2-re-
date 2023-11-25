@@ -85,7 +85,7 @@ const Dashboard = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-bar-chart-steps ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Line Chart</span>
+                  <span className="ms-2 d-none d-sm-inline">Recruitment</span>
                 </Link>
               </li>
               <li className="w-100">
@@ -94,7 +94,7 @@ const Dashboard = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-bar-chart-line-fill ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Cylindrical Chart</span>
+                  <span className="ms-2 d-none d-sm-inline">Revenue</span>
                 </Link>
               </li>
               <li className="w-100" onClick={handleLogout}>

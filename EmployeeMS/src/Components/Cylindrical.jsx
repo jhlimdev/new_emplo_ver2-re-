@@ -7,11 +7,11 @@ import { ChartComponent, ColumnSeries, Category, DataLabel, Tooltip, SeriesDirec
 import { Browser } from '@syncfusion/ej2-base';
 export let data = [
     // { x: 'China', y: 26, tooltipMappingName: 'China' },
-    { x: 'Australia', y: 8, tooltipMappingName: 'Australia' },
-    { x: 'Germany', y: 17, tooltipMappingName: 'Germany' },
-    { x: 'Spain', y: 7, tooltipMappingName: 'Spain' },
-    { x: 'Japan', y: 12, tooltipMappingName: 'Japan' },
-    { x: 'USA', y: 46, tooltipMappingName: 'United States' }
+    { x: 'Web', y: 8, tooltipMappingName: 'Web' },
+    { x: 'Windows', y: 17, tooltipMappingName: 'Windows' },
+    { x: 'Mac', y: 7, tooltipMappingName: 'Mac' },
+    { x: 'Linux', y: 12, tooltipMappingName: 'Linux' },
+    { x: 'A.I.', y: 46, tooltipMappingName: 'A.I.' }
 ];
 const Cylindrical = () => {
     const onChartLoad = (args) => {
@@ -25,7 +25,7 @@ const Cylindrical = () => {
     };
     return (<div className='control-pane'>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} chartArea={{ border: { width: 0 } }} title='Olympic Gold Medal Counts - RIO' primaryXAxis={{
+                <ChartComponent id='charts' style={{ textAlign: "center" }} chartArea={{ border: { width: 0 } }} title='The departmental revenue over the past month' primaryXAxis={{
             valueType: 'Category',
             interval: 1,
             majorGridLines: { width: 0 },
@@ -34,7 +34,7 @@ const Cylindrical = () => {
             majorTickLines: { width: 0 },
             minorTickLines: { width: 0 }
         }} primaryYAxis={{
-            title: 'Medal Count',
+            title: 'The departmental revenue(1M $)',
             majorTickLines: { width: 0 },
             lineStyle: { width: 0 },
             maximum: 50,
@@ -42,7 +42,7 @@ const Cylindrical = () => {
         }} tooltip={{
             enable: true,
             header: "<b>${point.tooltip}</b>",
-            format: "Gold Medal: <b>${point.y}</b>"
+            format: "US $: <b>${point.y}m$</b>"
         }} load={load.bind(this)} loaded={onChartLoad.bind(this)} width={Browser.isDevice ? '100%' : '75%'}>
                     <Inject services={[ColumnSeries, Category, DataLabel, Tooltip]}/>
                     <SeriesCollectionDirective>
