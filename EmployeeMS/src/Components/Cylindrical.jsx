@@ -7,13 +7,16 @@ import { ChartComponent, ColumnSeries, Category, DataLabel, Tooltip, SeriesDirec
 import { Browser } from '@syncfusion/ej2-base';
 export let data = [
     // { x: 'China', y: 26, tooltipMappingName: 'China' },
-    { x: 'Web', y: 8, tooltipMappingName: 'Web' },
-    { x: 'Windows', y: 17, tooltipMappingName: 'Windows' },
-    { x: 'Mac', y: 7, tooltipMappingName: 'Mac' },
-    { x: 'Linux', y: 12, tooltipMappingName: 'Linux' },
+    { x: '웹', y: 8, tooltipMappingName: '웹' },
+    { x: '윈도우', y: 17, tooltipMappingName: '윈도우' },
+    { x: '맥', y: 7, tooltipMappingName: '맥' },
+    { x: '리눅스', y: 12, tooltipMappingName: '리눅스' },
     { x: 'A.I.', y: 46, tooltipMappingName: 'A.I.' }
 ];
 const Cylindrical = () => {
+    useEffect(() => {
+        document.title = "D.U.EMS | 부서별 수입"
+      }, [])
     const onChartLoad = (args) => {
         let chart = document.getElementById('charts');
         chart.setAttribute('title', '');
@@ -25,7 +28,7 @@ const Cylindrical = () => {
     };
     return (<div className='control-pane'>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} chartArea={{ border: { width: 0 } }} title='The departmental revenue over the past month' primaryXAxis={{
+                <ChartComponent id='charts' style={{ textAlign: "center" }} chartArea={{ border: { width: 0 } }} title='지난 달 부서별 수익 현황' primaryXAxis={{
             valueType: 'Category',
             interval: 1,
             majorGridLines: { width: 0 },
@@ -34,7 +37,7 @@ const Cylindrical = () => {
             majorTickLines: { width: 0 },
             minorTickLines: { width: 0 }
         }} primaryYAxis={{
-            title: 'The departmental revenue(1M $)',
+            title: '부서별 수익(원₩)',
             majorTickLines: { width: 0 },
             lineStyle: { width: 0 },
             maximum: 50,
@@ -42,7 +45,7 @@ const Cylindrical = () => {
         }} tooltip={{
             enable: true,
             header: "<b>${point.tooltip}</b>",
-            format: "US $: <b>${point.y}m$</b>"
+            format: "KR ₩: <b>${point.y}₩</b>"
         }} load={load.bind(this)} loaded={onChartLoad.bind(this)} width={Browser.isDevice ? '100%' : '75%'}>
                     <Inject services={[ColumnSeries, Category, DataLabel, Tooltip]}/>
                     <SeriesCollectionDirective>

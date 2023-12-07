@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,6 +22,9 @@ import Charts from './Components/Charts';
 import Cylindrical from './Components/Cylindrical';
 
 function App() {
+  useEffect(() => {
+    document.title = "D.U.EMS"
+  }, [])
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -29,9 +33,11 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
-      <div className="dark-mode-toggle" onClick={toggleDarkMode}>
+      {window.location.pathname !== "/" &&  (
+        <div className="dark-mode-toggle" onClick={toggleDarkMode}>
         {darkMode ? 'Light Mode' : 'Dark Mode'}
       </div>
+      )}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Start />} />

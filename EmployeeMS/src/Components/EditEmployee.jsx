@@ -15,6 +15,7 @@ const EditEmployee = () => {
       const navigate = useNavigate()
 
       useEffect(()=> {
+        document.title = "D.U.EMS | 사원 편집"
         axios.get('http://localhost:3000/auth/category')
         .then(result => {
             if(result.data.Status) {
@@ -52,11 +53,11 @@ const EditEmployee = () => {
   return (
     <div className="d-flex justify-content-center align-items-center mt-3">
       <div className="p-3 rounded w-50 border">
-        <h3 className="text-center">Edit Employee</h3>
+        <h3 className="text-center">사원 편집</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
             <label for="inputName" className="form-label">
-              Name
+              성함
             </label>
             <input
               type="text"
@@ -87,7 +88,7 @@ const EditEmployee = () => {
           </div>
           <div className='col-12'>
             <label for="inputSalary" className="form-label">
-              Salary
+              급여
             </label>
             <input
               type="text"
@@ -103,7 +104,7 @@ const EditEmployee = () => {
           </div>
           <div className="col-12">
             <label for="inputAddress" className="form-label">
-              Address
+              주소
             </label>
             <input
               type="text"
@@ -119,7 +120,7 @@ const EditEmployee = () => {
           </div>
           <div className="col-12">
             <label for="category" className="form-label">
-              Category
+              부서
             </label>
             <select name="category" id="category" className="form-select"
                 onChange={(e) => setEmployee({...employee, category_id: e.target.value})}>
@@ -131,7 +132,7 @@ const EditEmployee = () => {
           
           <div className="col-12">
             <button type="submit" className="btn btn-primary w-100">
-              Edit Employee
+              편집 완료
             </button>
           </div>
         </form>

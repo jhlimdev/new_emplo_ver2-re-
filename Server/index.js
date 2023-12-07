@@ -11,6 +11,7 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', "DELETE"],
     credentials: true
 }))
+
 app.use(express.json())
 app.use(cookieParser())
 app.use('/auth', adminRouter)
@@ -21,19 +22,20 @@ const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
     if(token) {
         Jwt.verify(token, "jwt_secret_key", (err ,decoded) => {
-            if(err) return res.json({Status: false, Error: "Wrong Token"})
+            if(err) return res.json({Status: false, Error: "잘못된 토큰 입니다."})
             req.id = decoded.id;
             req.role = decoded.role;
             next()
         })
     } else {
-        return res.json({Status: false, Error: "Not autheticated"})
+        return res.json({Status: false, Error: "인증되지 않았습니다."})
     }
 }
+
 app.get('/verify',verifyUser, (req, res)=> {
     return res.json({Status: true, role: req.role, id: req.id})
 } )
 
 app.listen(3000, () => {
-    console.log("Server is running")
+    console.log("서버가 작동 중입니다.")
 })

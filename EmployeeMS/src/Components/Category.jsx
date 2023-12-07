@@ -7,6 +7,7 @@ const Category = () => {
     const [category, setCategory] = useState([])
 
     useEffect(()=> {
+        document.title = "D.U.EMS | 부서 목록"
         axios.get('http://localhost:3000/auth/category')
         .then(result => {
             if(result.data.Status) {
@@ -30,14 +31,15 @@ const Category = () => {
   return (
     <div className='px-5 mt-3'>
         <div className='d-flex justify-content-center'>
-            <h3>Cetegory List</h3>
+            <h3>부서 목록</h3>
         </div>
-        <Link to="/dashboard/add_category" className='btn btn-success'>Add Cetegory</Link>
-        <div className="mt-3" style={{ borderRadius: '10px', overflow: 'hidden' }}>
-            <table className='table'>
+        <Link to="/dashboard/add_category" className='btn btn-success'>부서 추가</Link>
+        <div className="mt-3">
+            <h2>부서 명</h2>
+            <table className='table' style={{ borderRadius: '10px', overflow: 'hidden' }}>
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        {/* <th>Name</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +47,7 @@ const Category = () => {
                         category.map(c => (
                             <tr>
                                 <td>{c.name}</td>
-                                <td><button className="btn btn-warning btn-sm" onClick={() => handleDelete(c.id)}>Delete</button></td>
+                                <td><button className="btn btn-warning btn-sm" onClick={() => handleDelete(c.id)}>삭제</button></td>
                             </tr>
                         ))
                     }

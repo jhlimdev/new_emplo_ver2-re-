@@ -8,9 +8,9 @@ import path from "path";
 const router = express.Router();
 
 router.post("/adminlogin", (req, res) => {
-  const sql = "SELECT * from admin Where email = ? and password = ?";
+  const sql = "SELECT * FROM admin WHERE email = ? and password = ?";
   con.query(sql, [req.body.email, req.body.password], (err, result) => {
-    if (err) return res.json({ loginStatus: false, Error: "Query error" });
+    if (err) return res.json({ loginStatus: false, Error: "쿼리 에러" });
     if (result.length > 0) {
       const email = result[0].email;
       const token = jwt.sign(
@@ -21,7 +21,7 @@ router.post("/adminlogin", (req, res) => {
       res.cookie('token', token)
       return res.json({ loginStatus: true });
     } else {
-        return res.json({ loginStatus: false, Error:"wrong email or password" });
+        return res.json({ loginStatus: false, Error:"이메일 혹은 비밀번호가 틀렸습니다." });
     }
   });
 });
@@ -29,7 +29,7 @@ router.post("/adminlogin", (req, res) => {
 router.get('/category', (req, res) => {
     const sql = "SELECT * FROM category";
     con.query(sql, (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"})
         return res.json({Status: true, Result: result})
     })
 })
@@ -37,23 +37,23 @@ router.get('/category', (req, res) => {
 router.post('/add_category', (req, res) => {
     const sql = "INSERT INTO category (`name`) VALUES (?)"
     con.query(sql, [req.body.category], (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"})
         return res.json({Status: true})
     })
 })
 
 router.delete('/delete_category/:id', (req, res) => {
     const id = req.params.id;
-    const sql = "delete from category where id = ?"
+    const sql = "DELETE FROM category WHERE id = ?"
     con.query(sql,[id], (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"+err})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"+err})
         return res.json({Status: true, Result: result})
     })
 })
 router.get('/note', (req, res) => {
     const sql = "SELECT * FROM note";
     con.query(sql, (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"})
         return res.json({Status: true, Result: result})
     })
 })
@@ -61,21 +61,21 @@ router.get('/note', (req, res) => {
 router.post('/add_note', (req, res) => {
     const sql = "INSERT INTO note (`content`) VALUES (?)"
     con.query(sql, [req.body.note], (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"})
         return res.json({Status: true})
     })
 })
 
 router.delete('/delete_note/:id', (req, res) => {
     const id = req.params.id;
-    const sql = "delete from note where id = ?"
+    const sql = "DELETE FROM note WHERE id = ?"
     con.query(sql,[id], (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"+err})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"+err})
         return res.json({Status: true, Result: result})
     })
 })
 
-// image upload 
+// -이미지 업로드 부분 시작- 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'Public/Images')
@@ -87,7 +87,7 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage
 })
-// end imag eupload 
+// -이미지 업로드 부분 끝-
 
 router.post('/add_employee',upload.single('image'), (req, res) => {
     const sql = `INSERT INTO employee 
@@ -114,7 +114,7 @@ router.post('/add_employee',upload.single('image'), (req, res) => {
 router.get('/employee', (req, res) => {
     const sql = "SELECT * FROM employee";
     con.query(sql, (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"})
         return res.json({Status: true, Result: result})
     })
 })
@@ -123,7 +123,7 @@ router.get('/employee/:id', (req, res) => {
     const id = req.params.id;
     const sql = "SELECT * FROM employee WHERE id = ?";
     con.query(sql,[id], (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"})
         return res.json({Status: true, Result: result})
     })
 })
@@ -141,48 +141,48 @@ router.put('/edit_employee/:id', (req, res) => {
         req.body.category_id
     ]
     con.query(sql,[...values, id], (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"+err})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"+err})
         return res.json({Status: true, Result: result})
     })
 })
 
 router.delete('/delete_employee/:id', (req, res) => {
     const id = req.params.id;
-    const sql = "delete from employee where id = ?"
+    const sql = "DELETE FROM employee WHERE id = ?"
     con.query(sql,[id], (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"+err})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"+err})
         return res.json({Status: true, Result: result})
     })
 })
 
 router.get('/admin_count', (req, res) => {
-    const sql = "select count(id) as admin from admin";
+    const sql = "SELECT COUNT(id) as admin FROM admin";
     con.query(sql, (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"+err})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"+err})
         return res.json({Status: true, Result: result})
     })
 })
 
 router.get('/employee_count', (req, res) => {
-    const sql = "select count(id) as employee from employee";
+    const sql = "SELECT COUNT(id) as employee FROM employee";
     con.query(sql, (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"+err})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"+err})
         return res.json({Status: true, Result: result})
     })
 })
 
 router.get('/salary_count', (req, res) => {
-    const sql = "select sum(salary) as salaryOFEmp from employee";
+    const sql = "SELECT FORMAT(SUM(salary), 0) AS salaryOFEmp FROM employee";
     con.query(sql, (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"+err})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"+err})
         return res.json({Status: true, Result: result})
     })
 })
 
 router.get('/admin_records', (req, res) => {
-    const sql = "select * from admin"
+    const sql = "SELECT * FROM admin"
     con.query(sql, (err, result) => {
-        if(err) return res.json({Status: false, Error: "Query Error"+err})
+        if(err) return res.json({Status: false, Error: "쿼리 에러"+err})
         return res.json({Status: true, Result: result})
     })
 })

@@ -6,6 +6,7 @@ const Note = () => {
     const [note, setNote] = useState([])
 
     useEffect(()=> {
+        document.title = "D.U.EMS | 공유 메모"
         axios.get('http://localhost:3000/auth/note')
         .then(result => {
             if(result.data.Status) {
@@ -41,29 +42,29 @@ const Note = () => {
   return (
     <div className='px-5 mt-3'>
         <div className='d-flex justify-content-center'>
-            <h3>Note List</h3>
+            <h3>공유 메모 목록</h3>
         </div>
-        <Link to="/dashboard/add_note" className='btn btn-success'>Add Note</Link>
+        <Link to="/dashboard/add_note" className='btn btn-success'>메모 추가</Link>
         <div className="mt-3" style={{ borderRadius: '10px', overflow: 'hidden' }}>
-            <table className='table'>
+            <h2>목록</h2>
+            <table className='table' style={{ borderRadius: '10px', overflow: 'hidden' }}>
                 <thead>
                     <tr>
-                        <th>List</th>
+                        {/* <th>List</th> */}
                     </tr>
                 </thead>
                 <tbody>
                     {
                         note.map(n => (
                             <tr key = {n.id}>
-                                <td>{n.content}</td>
-                                <td>{formatDateTime(n.time)}<button style={{ marginLeft: '20px' }} className="btn btn-warning btn-sm" onClick={() => handleDelete(n.id)}>Delete</button></td>
+                                <td>{n.content}  </td>
+                                <td>&nbsp;{formatDateTime(n.time)}<button style={{ marginLeft: '20px' }} className="btn btn-warning btn-sm" onClick={() => handleDelete(n.id)}>삭제</button></td>
                             </tr>
                         ))
                     }
                 </tbody>
             </table>
         </div>
-
     </div>
   )
 }

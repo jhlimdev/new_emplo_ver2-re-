@@ -37,8 +37,9 @@ const Dashboard = () => {
                   to="/dashboard"
                   className="nav-link text-white px-0 align-middle"
                 >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Dashboard</span>
+                  {/* <i className="fs-4 bi-speedometer2 ms-2"></i> */}
+                  <i className="fs-4 bi-layout-text-sidebar-reverse ms-2"></i>
+                  <span className="ms-2 d-none d-sm-inline">대시보드</span>
                 </Link>
               </li>
               <li className="w-100">
@@ -48,7 +49,7 @@ const Dashboard = () => {
                 >
                   <i className="fs-4 bi-people ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Manage Employees
+                    사원 관리
                   </span>
                 </Link>
               </li>
@@ -58,7 +59,7 @@ const Dashboard = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-columns ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Category</span>
+                  <span className="ms-2 d-none d-sm-inline">부서</span>
                 </Link>
               </li>
               <li className="w-100">
@@ -67,7 +68,7 @@ const Dashboard = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-clipboard2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Note</span>
+                  <span className="ms-2 d-none d-sm-inline">공유 메모장</span>
                 </Link>
               </li>
               <li className="w-100">
@@ -76,7 +77,7 @@ const Dashboard = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-person ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Profile</span>
+                  <span className="ms-2 d-none d-sm-inline">관리자 프로필</span>
                 </Link>
               </li>
               <li className="w-100">
@@ -85,7 +86,7 @@ const Dashboard = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-bar-chart-steps ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Recruitment</span>
+                  <span className="ms-2 d-none d-sm-inline">채용 현황 그래프</span>
                 </Link>
               </li>
               <li className="w-100">
@@ -94,7 +95,7 @@ const Dashboard = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-bar-chart-line-fill ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Revenue</span>
+                  <span className="ms-2 d-none d-sm-inline">수익 현황 그래프</span>
                 </Link>
               </li>
               <li className="w-100" onClick={handleLogout}>
@@ -102,7 +103,7 @@ const Dashboard = () => {
                   className="nav-link px-0 align-middle text-white"
                 >
                   <i className="fs-4 bi-power ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Logout</span>
+                  <span className="ms-2 d-none d-sm-inline">로그아웃</span>
                 </Link>
               </li>
             </ul>
@@ -110,7 +111,7 @@ const Dashboard = () => {
         </div>
         <div className="col p-0 m-0">
             <div className="p-2 d-flex justify-content-center shadow">
-                <h4>Emoployee Management System</h4>
+                <h4>D.U EMS 동서울 사원관리 시스템</h4>
             </div>
             <Outlet />
         </div>

@@ -1,5 +1,6 @@
 // Profile.js
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 //import './Profile.css';
 import './ProfileSlider.css';
 
@@ -11,11 +12,15 @@ import 'swiper/css/pagination';
 
 
 const Profile = () => {
-  const [name1] = useState('Jaehoon Lim');
-  const [name2] = useState('Sehyeong Jo');
-  const [name3] = useState('Hyeonsu No');
-  const [name4] = useState('Jinsu Han');
-  const [name5] = useState('Yangsu Jo');
+  useEffect(()=> {
+    document.title = "D.U.EMS | 관리자 프로필"
+  },[])
+
+  const [name1] = useState('임재훈');
+  const [name2] = useState('조세형');
+  const [name3] = useState('노현수');
+  const [name4] = useState('한진수');
+  const [name5] = useState('조양수');
 
   return (
     <>
@@ -93,7 +98,7 @@ const Profile = () => {
                 </div>
                 <div className="name-profession">
                   <span className="name">{name3}</span>
-                  <span className="profession">Consultant/DB/SM/Designer</span>
+                  <span className="profession">Consultant/DB/SM/Designer/Programmer</span>
                 </div>
                 <div className="about">
                   <p>동서울대학교 컴퓨터정보과 3학년 A반 190479</p>

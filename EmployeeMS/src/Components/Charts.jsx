@@ -18,6 +18,9 @@ const SAMPLE_CSS = `
         align :center
     }`;
 const Line = () => {
+    useEffect(() => {
+        document.title = "D.U.EMS | 부서별 신입사원"
+      }, [])
     const onChartLoad = (args) => {
         let chart = document.getElementById('charts');
         chart.setAttribute('title', '');
@@ -31,14 +34,14 @@ const Line = () => {
     return (<div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, labelFormat: 'y' }} load={load.bind(this)} primaryYAxis={{ title: 'The number of new hires', rangePadding: 'None', minimum: 0, maximum: 20, interval: 4, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true }} legendSettings={{ enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title="The annual recruitment figures by job category" loaded={onChartLoad.bind(this)}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, labelFormat: 'y' }} load={load.bind(this)} primaryYAxis={{ title: '고용한 인원 수', rangePadding: 'None', minimum: 0, maximum: 20, interval: 4, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true }} legendSettings={{ enableHighlight: true }} width={Browser.isDevice ? '100%' : '75%'} title="연간 부서별 고용 인원" loaded={onChartLoad.bind(this)}>
                     <Inject services={[LineSeries, DateTime, Legend, Tooltip, Highlight]}/>
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data2} xName="x" yName="y" name="A.I" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Circle', isFilled: true }} type="Line"></SeriesDirective>
-                        <SeriesDirective dataSource={data1} xName="x" yName="y" name="Windows" width={2} marker={{ visible: true, width: 6, height: 6, shape: 'Triangle', isFilled: true }} type="Line"></SeriesDirective>
-                        <SeriesDirective dataSource={data3} xName="x" yName="y" name="Mac" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Diamond', isFilled: true }} type="Line"></SeriesDirective>
-                        <SeriesDirective dataSource={data4} xName="x" yName="y" name="Web" width={2} marker={{ visible: true, width: 5, height: 5, shape: 'Rectangle', isFilled: true }} type="Line"></SeriesDirective>
-                        <SeriesDirective dataSource={data5} xName="x" yName="y" name="Linux" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Pentagon', isFilled: true }} type="Line"></SeriesDirective>
+                        <SeriesDirective dataSource={data1} xName="x" yName="y" name="윈도우" width={2} marker={{ visible: true, width: 6, height: 6, shape: 'Triangle', isFilled: true }} type="Line"></SeriesDirective>
+                        <SeriesDirective dataSource={data3} xName="x" yName="y" name="맥" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Diamond', isFilled: true }} type="Line"></SeriesDirective>
+                        <SeriesDirective dataSource={data4} xName="x" yName="y" name="웹" width={2} marker={{ visible: true, width: 5, height: 5, shape: 'Rectangle', isFilled: true }} type="Line"></SeriesDirective>
+                        <SeriesDirective dataSource={data5} xName="x" yName="y" name="리눅스" width={2} marker={{ visible: true, width: 7, height: 7, shape: 'Pentagon', isFilled: true }} type="Line"></SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>

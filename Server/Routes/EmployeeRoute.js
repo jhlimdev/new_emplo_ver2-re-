@@ -8,16 +8,16 @@ const router = express.Router()
 router.post("/employee_login", (req, res) => {
     const sql = "SELECT * from employee Where email = ?";
     con.query(sql, [req.body.email], (err, result) => {
-      if (err) return res.json({ loginStatus: false, Error: "Query error" });
+      if (err) return res.json({ loginStatus: false, Error: "쿼리 에러" });
       if (result.length > 0) {
         bcrypt.compare(req.body.password, result[0].password, (err, response) => {
-            if (err) return res.json({ loginStatus: false, Error: "Wrong Password" });
+            if (err) return res.json({ loginStatus: false, Error: "비밀번호가 틀렸습니다." });
             if(response) {
                 const email = result[0].email;
                 const token = jwt.sign(
                     { role: "employee", email: email, id: result[0].id },
                     "jwt_secret_key",
-                    { expiresIn: "1d" }
+                    { expiresIn: "10m" }
                 );
                 res.cookie('token', token)
                 return res.json({ loginStatus: true, id: result[0].id });
@@ -25,7 +25,7 @@ router.post("/employee_login", (req, res) => {
         })
         
       } else {
-          return res.json({ loginStatus: false, Error:"wrong email or password" });
+          return res.json({ loginStatus: false, Error:"이메일 혹은 비밀번호가 틀렸습니다." });
       }
     });
   });

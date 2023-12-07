@@ -7,6 +7,7 @@ const Employee = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
+      document.title = "D.U.EMS | 사원 관리"
     axios
       .get("http://localhost:3000/auth/employee")
       .then((result) => {
@@ -31,22 +32,22 @@ const Employee = () => {
   return (
     <div className="px-5 mt-3">
       <div className="d-flex justify-content-center">
-        <h3>Employee List</h3>
+        <h3>사원 목록</h3>
       </div>
       <Link to="/dashboard/add_employee" className="btn btn-success">
-        Add Employee
+        사원 추가
       </Link>
-      <div className="mt-3" style={{ borderRadius: '10px', overflow: 'hidden' }}>
-        <table className="table">
+      <div className="mt-3">
+        <table className='table' style={{ borderRadius: '10px', overflow: 'hidden' }}>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Image</th>
+              <th>성함</th>
+              <th>사진</th>
               <th>Email</th>
-              <th>Address</th>
-              <th>Salary</th>
-              <th>Category_Num</th>
-              <th>Action</th>
+              <th>주소</th>
+              <th>급여</th>
+              <th>부서 번호</th>
+              <th>수정 권한</th>
             </tr>
           </thead>
           <tbody>
@@ -61,20 +62,20 @@ const Employee = () => {
                 </td>
                 <td>{e.email}</td>
                 <td>{e.address}</td>
-                <td>{e.salary}</td>
+                <td>₩ {e.salary.toLocaleString()}</td>
                 <td>{e.category_id}</td>
                 <td>
                   <Link
                     to={`/dashboard/edit_employee/` + e.id}
                     className="btn btn-info btn-sm me-2"
                   >
-                    Edit
+                    편집
                   </Link>
                   <button
                     className="btn btn-warning btn-sm"
                     onClick={() => handleDelete(e.id)}
                   >
-                    Delete
+                    삭제
                   </button>
                 </td>
               </tr>

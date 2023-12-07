@@ -16,6 +16,7 @@ const AddEmployee = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
+    document.title = "D.U.EMS | 사원 추가"
     axios
       .get("http://localhost:3000/auth/category")
       .then((result) => {
@@ -53,17 +54,17 @@ const AddEmployee = () => {
   return (
     <div className="d-flex justify-content-center align-items-center mt-3">
       <div className="p-3 rounded w-50 border">
-        <h3 className="text-center">Add Employee</h3>
+        <h3 className="text-center">사원 추가</h3>
         <form className="row g-1" onSubmit={handleSubmit}>
           <div className="col-12">
             <label for="inputName" className="form-label">
-              Name
+              성함
             </label>
             <input
               type="text"
               className="form-control rounded-0"
               id="inputName"
-              placeholder="Enter Name"
+              placeholder="성함 입력"
               onChange={(e) =>
                 setEmployee({ ...employee, name: e.target.value })
               }
@@ -77,7 +78,7 @@ const AddEmployee = () => {
               type="email"
               className="form-control rounded-0"
               id="inputEmail4"
-              placeholder="Enter Email"
+              placeholder="Email 주소 입력"
               autoComplete="off"
               onChange={(e) =>
                 setEmployee({ ...employee, email: e.target.value })
@@ -86,25 +87,25 @@ const AddEmployee = () => {
           </div>
           <div className="col-12">
             <label for="inputPassword4" className="form-label">
-              Password
+              비밀번호
             </label>
             <input
               type="password"
               className="form-control rounded-0"
               id="inputPassword4"
-              placeholder="Enter Password"
+              placeholder="비밀번호 입력"
               onChange={(e) =>
                 setEmployee({ ...employee, password: e.target.value })
               }
             />
             <label for="inputSalary" className="form-label">
-              Salary
+              급여
             </label>
             <input
               type="text"
               className="form-control rounded-0"
               id="inputSalary"
-              placeholder="Enter Salary"
+              placeholder="급여 입력"
               autoComplete="off"
               onChange={(e) =>
                 setEmployee({ ...employee, salary: e.target.value })
@@ -113,13 +114,13 @@ const AddEmployee = () => {
           </div>
           <div className="col-12">
             <label for="inputAddress" className="form-label">
-              Address
+              주소
             </label>
             <input
               type="text"
               className="form-control rounded-0"
               id="inputAddress"
-              placeholder="1234 Main St"
+              placeholder="주소 입력"
               autoComplete="off"
               onChange={(e) =>
                 setEmployee({ ...employee, address: e.target.value })
@@ -128,7 +129,7 @@ const AddEmployee = () => {
           </div>
           <div className="col-12">
             <label for="category" className="form-label">
-              Category
+              부서
             </label>
             <select name="category" id="category" className="form-select"
                 onChange={(e) => setEmployee({...employee, category_id: e.target.value})}>
@@ -139,7 +140,7 @@ const AddEmployee = () => {
           </div>
           <div className="col-12 mb-3">
             <label className="form-label" for="inputGroupFile01">
-              Select Image
+              이미지 선택
             </label>
             <input
               type="file"
@@ -151,7 +152,7 @@ const AddEmployee = () => {
           </div>
           <div className="col-12">
             <button type="submit" className="btn btn-primary w-100">
-              Add Employee
+              사원 추가
             </button>
           </div>
         </form>
